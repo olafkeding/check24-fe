@@ -47,6 +47,7 @@ table {
     border-spacing: 0;
 }
 
+/*Basics*/
 body {
     font-family: Verdana,Arial,Helvetica,sans-serif;
     font-size: 12px;
@@ -55,3 +56,131 @@ body {
 }
 
 /*Box-Model*/
+.container,
+.container * {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 994px;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+.statusbar {
+    width: 100%;
+    display: flex;
+    /*
+    flex-direction: row; (row-reverse | column | column-reverse)
+    flex-wrap: nowrap; (flex-wrap)
+    align-items: stretch; (flex-start, flex-end, center)
+    justify-content: flex-start; (flex-end, center, space-between, space-around, space-evenly)
+    */
+    margin: 20px 0;
+}
+
+.statusbar .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: auto;
+    /*
+        flex-grow: 1; -> proportion
+        flex-shrink: 1;
+        flex-basis: auto;
+    */
+    position: relative;
+}
+
+/*Line right*/
+.statusbar .item:not(:first-child)::after {
+    content: '';
+    height: 1px;
+    width: calc(50% - 13px);
+    position: absolute;
+    left: 0;
+    top: 13px;
+    background: #b4b4b4;
+}
+
+/*Line leftt*/
+.statusbar .item:not(:last-child)::before {
+    content: '';
+    height: 1px;
+    width: calc(50% - 13px);
+    position: absolute;
+    right: 0;
+    top: 13px;
+    background: #b4b4b4;
+}
+
+.statusbar .bubble {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #b4b4b4;
+    color: #b4b4b4;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 13px;
+    background: #fff;
+}
+
+.statusbar .text {
+    color: #b4b4b4;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+/*
+TODO
+style active and visited state
+active: background:  #005ea8, border: #005ea8, font: #fff, line left: #005ea8
+visited: background: #fff, border: #005ea8, font: #005ea8, line left and right: #005ea8
+*/
+
+.form-container {
+    margin: 20px 0;
+    display: flex;
+}
+
+.form-container form {
+    flex : auto;
+    border: 1px solid green;
+    padding: 25px;
+}
+
+.helpbar {
+    width: 180px;
+}
+
+.submit-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-headline {
+    color: #005ea8;
+    font-size: 23px;
+    line-height: 30px;
+    margin-bottom: 25px;
+}
+
+.formrow {
+    display: flex;
+}
+
+.formrow label {
+    flex : auto;
+}
+
+.formrow .control-wrapper {
+    width: 294px;
+}
+
+.formrow .help {
+    width: 10%;
+    margin: auto;
+}
