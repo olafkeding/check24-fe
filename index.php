@@ -42,7 +42,7 @@
             <section class="form-section">
                 <h2 class="section-headline">Teil 2</h2>
                 <div class="formrow">
-                    <label for="plz">Geburtsdatum</label>
+                    <label for="plz">PLZ, Ort</label>
                     <div class="control-wrapper control-plz" id="field_plzort" data-help="help_plzort">
                         <input type="text" id="plz" name="plz" />
                         <select name="ort">
