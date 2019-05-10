@@ -184,3 +184,12 @@ visited: background: #fff, border: #005ea8, font: #005ea8, line left and right: 
     width: 10%;
     margin: auto;
 }
+
+/*TODO*/
+/*
+Style form row according to check24 style guide
+- label (fonz-size, color)
+- help bobble (background, border-radius, font-size, line-height)
+- segmented date field (padding, font-size, margin)
+-
+*/

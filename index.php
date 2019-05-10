@@ -30,7 +30,7 @@
                     <div class="control-wrapper control-date" id="field_dob" data-help="help_dob">
                         <input type="text" id="dob_day" placeholder="TT" />
                         <input type="text" id="dob_month" placeholder="MM" />
-                        <input type="text" id="dob_year" placeholder="YYYY" />
+                        <input type="text" id="dob_year" placeholder="JJJJ" />
                         <input type="hidden" name="dob" />
                     </div>
                     <div class="help">
