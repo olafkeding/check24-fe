@@ -62,14 +62,15 @@
         <div class="helpbar">
             <div class="help-content">
                 <!-- Filled by JS -->
-                <div class="help-text">
+                <div class="help-text" style="top: 55px">
+                    <div class="help-corner"></div>
                     <div id="help_dob">
-                        <h3>Knecht's Leben</h3>
+                        <h3>Geburtsdatum</h3>
                         <p>Mit seiner Aufnahme in die Elite war Knechts Leben auf eine andre Ebene verpflanzt, es war der erste
                             und entscheidende Schritt in seiner Entwicklung geschehen. </p>
                     </div>
-                    <div id="help_plzort">
-                        <h3>Aufnahme</h3>
+                    <div id="help_plzort" style="display: none">
+                        <h3>PLZ</h3>
                         <p>
                             Es geht durchaus nicht allen Eliteschülern
                             so, daß die amtliche Aufnahme in die Elite mit dem innern Erlebnis der Berufung zusammenfällt.
