@@ -28,9 +28,9 @@
                 <div class="formrow">
                     <label for="dob_day">Geburtsdatum</label>
                     <div class="control-wrapper control-date" id="field_dob" data-help="help_dob">
-                        <input type="text" id="dob_day" placeholder="TT" />
-                        <input type="text" id="dob_month" placeholder="MM" />
-                        <input type="text" id="dob_year" placeholder="JJJJ" />
+                        <input type="text" id="dob_day" placeholder="TT" maxlength="2" />
+                        <input type="text" id="dob_month" placeholder="MM" maxlength="2" />
+                        <input type="text" id="dob_year" placeholder="JJJJ" maxlength="4" />
                         <input type="hidden" name="dob" />
                     </div>
                     <div class="help">
@@ -44,12 +44,10 @@
                 <div class="formrow">
                     <label for="plz">PLZ, Ort</label>
                     <div class="control-wrapper control-plz" id="field_plzort" data-help="help_plzort">
-                        <input type="text" id="plz" name="plz" />
-                        <select name="ort">
-                            <option name="dummy1">Dummy1</option>
-                            <option name="dummy2">Dummy2</option>
-                            <option name="dummy3">Dummy3</option>
+                        <input type="text" id="plz" name="plz" maxlength="5" />
+                        <select name="ort" style="display:none">
                         </select>
+                        <span class="ort-label" style="display:none"></span>
                     </div>
                     <div class="help">
                         <span>?</span>

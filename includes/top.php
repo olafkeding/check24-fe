@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
     <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
     <script src="https://www.check24.de/assets/wfr/201811131/check24.min.js?v=215"></script>
 
 
