@@ -25,9 +25,9 @@
         <form name="data" action="/data">
             <section class="form-section">
                 <h2 class="section-headline">Teil 1</h2>
-                <div class="formrow">
+                <div class="formrow" id="field_dob">
                     <label for="dob_day">Geburtsdatum</label>
-                    <div class="control-wrapper control-date" id="field_dob" data-help="help_dob">
+                    <div class="control-wrapper control-date" >
                         <input type="text" id="dob_day" placeholder="TT" maxlength="2" />
                         <input type="text" id="dob_month" placeholder="MM" maxlength="2" />
                         <input type="text" id="dob_year" placeholder="JJJJ" maxlength="4" />
@@ -41,13 +41,14 @@
 
             <section class="form-section">
                 <h2 class="section-headline">Teil 2</h2>
-                <div class="formrow">
+                <div class="formrow" id="field_plzort">
                     <label for="plz">PLZ, Ort</label>
-                    <div class="control-wrapper control-plz" id="field_plzort" data-help="help_plzort">
+                    <div class="control-wrapper control-plz">
                         <input type="text" id="plz" name="plz" maxlength="5" />
                         <select name="ort" style="display:none">
                         </select>
                         <span class="ort-label" style="display:none"></span>
+                        <div class="error-text"></div>
                     </div>
                     <div class="help">
                         <span>?</span>

@@ -1,6 +1,5 @@
 <?php
     header('Content-Type: application/json');
-    sdlklkjk 87aj!
     if(isset($_GET["plz"])) {
         $plz = $_GET["plz"];
         if($plz === "81539") {

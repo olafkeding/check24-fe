@@ -239,6 +239,15 @@ visited: background: #fff, border: #005ea8, font: #005ea8, line left and right: 
 
 .control-wrapper {
     width: 294px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.error-text {
+    width: 100%;
+    font-size: 11px;
+    color: #f00;
 }
 
 input[type="text"],
@@ -288,11 +297,11 @@ select {
 }
 
 .control-date input:nth-of-type(3){
-    width: 147px;
+    width: 146px;
 }
 
 .control-plz {
-    display: flex;
+
 }
 
 .control-plz input {
