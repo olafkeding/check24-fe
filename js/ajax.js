@@ -5,7 +5,9 @@ export const AJAX_SUCCESS = "AJAX_SUCCESS";
 export const AJAX_ERROR = "AJAX_ERROR";
 
 const doRequest  = async (url, method, data) => {
-    const queryString = Object.keys(data).map(key => key + '=' + data[key]).join('&');
+    const queryString = Object.keys(data)
+            .map(key => key + '=' + data[key])
+            .join('&');
     const options = { method: method || GET }; //default to GET
 
     if(method === POST) {
