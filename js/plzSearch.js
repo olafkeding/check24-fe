@@ -10,6 +10,7 @@ export const plzSearch = (plzElement, selectElement, spanElement, errorElement) 
 
         if(plz.length === 5) {
             const response = await get(PLZ_ENDPOINT, {plz});
+
             hide(selectElement);
             hide(spanElement);
             hide(errorElement);

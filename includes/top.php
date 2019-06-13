@@ -35,10 +35,8 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
     <script src="js/jquery.js"></script>
-    <script src="js/boostrap.js" type="module"></script>
-    <script src="js/ajax.js" type="module"></script>
-    <script src="js/plzSearch.js" type="module"></script>
-    <script src="js/domUtils.js" type="module"></script>
+    <script src="bundles/bootstrap.bundle.js" type="module"></script>
+
     <script src="https://www.check24.de/assets/wfr/201811131/check24.min.js?v=215"></script>
 
 
