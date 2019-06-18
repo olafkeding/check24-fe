@@ -162,23 +162,86 @@ console.log(foo); //ERROR: Uncaught ReferenceError: foo is not defined
 //Closures are handy to hold internal state
 var dog = function (name) {
     var age;
-
     return {
-        setAge: function (newAge) {
-            age = newAge;
+        setAge: newAge => {age = newAge;},
+        bark: message => {
+            return age
+                ? ["BARK!", message, "I'm", name, ",", age].join(" ")
+                : "WHINE!";
         },
-        bark: function(message) {
-            return age ? "BARK! " + message + " ("+age * 7 +", "+ name +")." : "Can't bark without age :((";
+        //no arrow function as we want to use "this"
+        getBarker: function (messagePrefix) {
+            // when a function is called as an object prop 'this' refers to the parent object
+            return (message) => {
+                return this.bark(messagePrefix + " : " + message);
+            }
         }
     }
 };
 
 var paul = dog("paul");
-paul.bark();
+console.log(paul.bark("Hello.")); //WHINE!
 paul.setAge(4);
-paul.bark();
+console.log(paul.bark("Hello")); //BARK! Goodbye I'm paul , 4
 
 var maggie = dog("maggie");
 maggie.setAge(10);
-maggie.bark();
+console.log(maggie.bark("Go Away!")); //BARK! Go Away! I'm maggie , 10
+
+var ekki = dog("Ekki");
+var ekkiDefaultBarker = ekki.getBarker("GEIL!");
+ekki.setAge(12);
+console.log(ekkiDefaultBarker("Hello.")); //BARK! GEIL! : Hello. I'm Ekki , 12
+
+//var declarations and function literals are hoisted to the top of their scope
+var cat = function(name) {
+    if(name) {
+        var newName = name + ", the Cat.";
+        meow(newName); //Meow, Mary, the Cat.
+        purr(); //Uncaught TypeError: purr is not a function
+    }
+
+    function meow(message){
+        console.log("Meow, " + message);
+    }
+
+    var purr = function() {
+        console.log("Purr, " + message);
+    }
+};
+
+cat("Mary");
+
+//this is how the JS compiler changes the code
+var hoistedCat = function(){+
+    var name, purr;
+    function meow(message){
+        console.log("Meow, " + message);
+    }
+    if(name) {
+        var newName = name + ", the Cat.";
+        meow(newName); //Meow, Mary, the Cat.
+        purr(); //Uncaught TypeError: purr is not a function
+    }
+    purr = function() {
+        console.log("Purr, " + message);
+    }
+};
+
+// let and const are block scoped variables
+var cat = function(name) {
+    if (name) {
+        const newName = name + ", the Cat."; //newName is only visible in the if-block
+        let catAge = 5;
+        catAge = 7; //works!
+        newName = "foo"; //TypeError: Assignment to constant variable.
+    }
+    console.log(catAge); //ReferenceError: catAge is not defined
+};
+
+cat("Mary");
+
+//modules let you encapsulate things in an easy manner
+
+
 
