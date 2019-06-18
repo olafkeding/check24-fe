@@ -7,12 +7,12 @@
         }
     };
 
-    //TODO
-    //- change funciton so that it receives a parameter object as second argument {paramKey1 : "param1Value", paramKey2 : "param3Value"}
+    //TODO #2
+    //- change function so that it receives a parameter object as second argument {paramKey1 : "param1Value", paramKey2 : "param3Value"}
     //- make the get function accessible through a wrapper function "ajax" ajax(url).get(data, callback)
     //- add a function ajax(url).post(data, callback) that uses "POST" instead of "GET" as method
-    //  - don't duplicate code
-    //  - make sure the common function is private (not accessible through ajax().)
+    //- don't duplicate code
+    //- make sure the common function is private (not accessible through ajax().)
 
     function get(url, callback) {
         var request = new XMLHttpRequest();
@@ -46,7 +46,7 @@
     documentReady(function(){
         var plzElement = document.getElementById("plz");
         plzElement.addEventListener("input", function(event) {
-            //TODO
+            //TODO #1
             //- use the get function (or ajax().get) to load the ort options form the server. The API supports two plz: "81539" and "16845"
             //- only dispatch the call if the user entered 5 digits
             //- if the server does not return a plz, show an error
@@ -55,7 +55,5 @@
             console.log(this.value);
         });
     });
-
-
 
 }());
