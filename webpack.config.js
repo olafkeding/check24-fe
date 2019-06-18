@@ -13,7 +13,7 @@ module.exports = props => {
     return {
         mode: env,
         entry: {
-            "bootstrap":  path.resolve(__dirname + "/js/bootstrap.js"),
+            "bootstrap": path.resolve(__dirname + "/js/bootstrap.js"),
         },
 
         output: {
@@ -47,3 +47,15 @@ module.exports = props => {
     "not op_mini all"
   ],*/
 //last 2 Chrome versions
+
+
+
+
+
+
+
+
+
+
+
+
