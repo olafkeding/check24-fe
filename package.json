@@ -2,9 +2,7 @@
   "name": "check24-fe",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "dev-build": "webpack --mode development",
     "build-watch": "webpack --mode development --watch"
@@ -15,24 +13,12 @@
         "@babel/env",
         {
           "targets": {
-            "browsers": ["last 2 Chrome versions"]
+            "browsers": ["IE 7"]
           }
         }
       ]
     ]
   },
-
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/olafkeding/check24-fe.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/olafkeding/check24-fe/issues"
-  },
-  "homepage": "https://github.com/olafkeding/check24-fe#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",

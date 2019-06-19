@@ -13,21 +13,21 @@ module.exports = props => {
     return {
         mode: env,
         entry: {
-            "bootstrap": path.resolve(__dirname + "/js/bootstrap.js"),
+            "bootstrap": path.resolve(__dirname + "/js/index.js"),
         },
 
         output: {
             filename: '[name].bundle.js',
             path: path.resolve(__dirname + '/bundles'),
         },
+        //loaders
         module: {
-            strictExportPresence: true,
             rules: [
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
                     use: {
-                        loader: 'babel-loader'
+                        loader: 'babel-loader' //multiple loaders possible here
                     }
                 }
             ]

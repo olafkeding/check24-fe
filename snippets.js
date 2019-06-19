@@ -192,6 +192,8 @@ var ekki = dog("Ekki");
 var ekkiDefaultBarker = ekki.getBarker("GEIL!");
 ekki.setAge(12);
 console.log(ekkiDefaultBarker("Hello.")); //BARK! GEIL! : Hello. I'm Ekki , 12
+ekki.setAge(25);
+console.log(ekkiDefaultBarker("Hello.")); //BARK! GEIL! : Hello. I'm Ekki , 25
 
 //var declarations and function literals are hoisted to the top of their scope
 var cat = function(name) {
@@ -241,7 +243,25 @@ var cat = function(name) {
 
 cat("Mary");
 
-//modules let you encapsulate things in an easy manner
+//modules let you encapsulate things in an easy manner on a file basis
+//using imports and exports
+//square.js
+export const name = 'square';
+
+export function draw(ctx, length, x, y, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, length, length);
+
+    return {
+        length: length,
+        x: x,
+        y: y,
+        color: color
+    };
+};
+
+//app.js
+import { name, draw } from 'square.js';
 
 
 
