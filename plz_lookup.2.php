@@ -1,8 +1,8 @@
 <?php
     header('Content-Type: application/json');
     header("Access-Control-Allow-Origin: *");
-    if(isset($_GET["plz"])) {
-        $plz = $_GET["plz"];
+    if(isset($_POST["plz"])) {
+        $plz = $_POST["plz"];
         if($plz === "81539") {
             echo json_encode(["München"]);
         } else if($plz === "16845") {

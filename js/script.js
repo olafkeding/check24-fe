@@ -60,7 +60,7 @@
             };
 
             if(method === POST) {
-                http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 request.send(paramsString);
             } else {
                 request.send();
@@ -85,7 +85,7 @@
             //- if the server returns more than one option, display then in the select element with the name "ort"
             var val = this.value;
             if(val.length === 5) {
-                ajax("/plz_lookup.php").get({plz: val}, function(response){
+                ajax("http://schulung.bloffen.de/ajax/plz_lookup.2.php").post({plz: val}, function(response){
                     var data;
                     var select = document.querySelector('#field_plzort select[name="ort"]');
                     var span = document.querySelector('#field_plzort .ort-label');
