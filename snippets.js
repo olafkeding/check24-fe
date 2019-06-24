@@ -263,5 +263,29 @@ export function draw(ctx, length, x, y, color) {
 //app.js
 import { name, draw } from 'square.js';
 
+// Promises are chainable and a good was of handling errors anywhere in the chain
+const getRoles = new function (userInfo) {
+    return new Promise((resolve, reject) => {
+        database.connect()
+            .then((connection) => connection.query('get roles sql'))
+            .then((result) => resolve(result))
+            .catch(reject)
+    });
+};
+
+// Promises are an improvment but still clunky.
+// Async / Await provides a way fo writing async functions synchronously
+// a function must be declared async if it uses await or another async function
+// async / await internally works with Promises
+const verifyUser = async function(){
+    try {
+        const connection = await database.connect();
+        const result = await connection.query('get roles sql');
+        return userInfo;
+    }catch (e){
+        //handle errors as needed
+    }
+};
+
 
 
