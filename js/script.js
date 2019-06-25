@@ -13,13 +13,13 @@
         }
     };
 
-    function hide(element) {
+    function hideElement(element) {
         element.style.display = "none";
     };
 
     function createOption(text, value) {
         const opt = document.createElement("option");
-        opt.value = value || text;
+        opt.value = typeof value !== "undefined" ? value : text;
         opt.innerText = text;
         return opt;
     };
@@ -44,10 +44,12 @@
             if (request.status >= 200 && request.status < 400) {
                 // Success!
                 try {
-                    callback({status: "SUCCESS", data: JSON.parse(request.responseText)});
+                    var parsedData = JSON.parse(request.responseText);
+
                 } catch (error) {
                     callback({status: "ERROR", message: "cannot parse response"});
                 }
+                callback({status: "SUCCESS", data: parsedData});
 
             } else {
                 // We reached our target server, but it returned an error
@@ -69,13 +71,15 @@
         var plzElement = document.getElementById("zipcode");
         plzElement.addEventListener("input", function (event) {
             //TODO #1
-            //- use the get function to load the ort options form the server.
-            //- http://schulung.bloffen.de/ajax/plz_lookup.php?plz=16845
-            //- The API supports two plz: "81539" and "16845"
+            //- use the get function to load the ort options form the server
+            //- Url: http://schulung.bloffen.de/ajax/plz_lookup.php?plz={PLZ_VALUE}
+            //- the API supports two plz: "81539" and "16845"
             //- only dispatch the call if the user entered 5 digits
-            //- if the server does not return a plz, show an error in the element with the class "field-error"
+            //- if the serverreturns an empty list, show an error in the element with the class "error"
             //- if the server does return one option, display it in a span with the class "ort-label"
             //- if the server returns more than one option, display then in the select element with the name "city"
+            //- sync the value of the city into the hidden input field with the ID city
+            //- if both zipcode and city have a valid value, show th button <button type="submit">SEND</button>
             console.log(this.value);
         });
     });
