@@ -1,7 +1,6 @@
 import { get, AJAX_SUCCESS } from "./ajax.js";
 import  { hide, createOption, removeAllChildren } from "./domUtils.js";
 
-
 const PLZ_ENDPOINT = "plz_lookup.php";
 
 export const plzSearch = (plzElement, selectElement, spanElement, errorElement) => {
@@ -20,7 +19,7 @@ export const plzSearch = (plzElement, selectElement, spanElement, errorElement) 
                     //select
                     removeAllChildren(selectElement);
                     selectElement.appendChild(createOption("-- Bitte wählen --", "null"));
-                    data.forEach(function(entry){
+                    data.forEach(entry =>{
                         selectElement.appendChild(createOption(entry));
                         selectElement.style.display = "inline-block";
                     });

@@ -29,8 +29,7 @@ const doRequest  = async (url, method, data) => {
     } catch (e) {
         return {status : AJAX_ERROR, error: {...e}};
     }
-}
-
+};
 
 export const get = async (url, data) => doRequest(url, GET, data);
 export const post = async (url, data) => doRequest(url, POST, data);

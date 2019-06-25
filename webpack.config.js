@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 
-
 module.exports = props => {
     if (!props) {
         props = {};
@@ -13,6 +12,7 @@ module.exports = props => {
     return {
         mode: env,
         entry: {
+            //multiple entries possible here
             "bootstrap": path.resolve(__dirname + "/js/index.js"),
         },
 
@@ -33,19 +33,11 @@ module.exports = props => {
             ]
         },
         devtool: isEnvDevelopment ? 'inline-source-map' : 'source-map',
-
         watch: !!props.watch
 
     }
 };
 
-/*
-*   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie < 11",
-    "not op_mini all"
-  ],*/
 //last 2 Chrome versions
 
 
