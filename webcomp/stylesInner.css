@@ -1,0 +1,10 @@
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    background: maroon;
+    color: #fefefe;
+    padding: 20px;
+    margin: 20px;
+}

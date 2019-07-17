@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8" /> 
+        <link rel="stylesheet" type="text/css" href="stylesOuter.css">
+        <title>Web Comp Example 1</title>
+        
+        <script src="elements-es5-adapter.js"></script>
+        <script src="babel-helpers.js"></script>
+        <script src="polyfill.js"></script>
+        <script src="https://www.check24.de/einsurance/kundenbereich/component.js"></script>
+        <kfz-3rd-view proc="ajhfajh834789afdj8wzfhuhvupshvunwu"></kfz-3rd-view>
+    </head>
+    <body>
+        <h1>Web Component Test</h1>
+        
+        <hello-moto first-name="Philipp" last-name=" Faißt" /></hello-moto>
+        <hello-moto first-name="Simón" last-name="Iribarren Godoy" /></hello-moto>
+        <hello-moto first-name="Olaf" last-name="Keding" id="olaf">
+            <!-- TODO How to handle children ?-->
+            <ul>
+                <li>FOO FOO</li>
+                <li>BAR BAR</li>
+            </ul>
+        </hello-moto>
+
+        <button id="mutate">MUTATE Olaf</button>
+        
+
+        <script>
+            console.log(document.querySelectorAll(".wrapper"))
+            console.log(document.querySelectorAll("hello-moto"))
+        </script>
+    </body>
+</html>

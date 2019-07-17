@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8" /> 
+        <link rel="stylesheet" type="text/css" href="stylesOuter.css">
+        <title>Web Comp Example 1</title>
+        <script src="polyfill.js"></script>
+        <script src="components/HelloMotoPolyfill.js"></script>
+    </head>
+    <body>
+        <h1>Web Component Test</h1>
+        
+        <hello-moto first-name="Philipp" last-name=" Faißt" /></hello-moto>
+        <hello-moto first-name="Simón" last-name="Iribarren Godoy" /></hello-moto>
+        <hello-moto first-name="Olaf" last-name="Keding" id="olaf">
+            <!-- TODO How to handle children ?-->
+        </hello-moto>
+
+        <button id="mutate">MUTATE Olaf</button>
+        
+
+        <script>
+            window.onload = function(){
+                var olaf = document.getElementById('olaf');
+                document.getElementById('mutate').addEventListener("click", function(){
+                    olaf.setAttribute("first-name", "Karl-Heinz");
+                });
+
+                console.log("Get inner: ", document.querySelectorAll("hello-moto .wrapper"));
+                console.log("Get shadow root: ", document.querySelectorAll("hello-moto"));
+             }
+            
+        </script>
+    </body>
+</html>

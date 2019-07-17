@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="utf-8" /> 
+        <link rel="stylesheet" type="text/css" href="stylesOuter.css">
+        <title>Web Comp Example 1</title>
+        <script src="polyfill.js"></script>
+        <script src="components/KfzDialog.js"></script>
+        <script>
+
+            //in KFZDialog.js
+            class KfzDialog extends HTMLElement {
+                connectedCallback() {
+                    
+                    const mountPoint = document.getElementById('c24-content-root');
+                    this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
+
+                    ReactDOM.render(
+                        <Provider store={store}>
+                            <ApplicationError >
+                                <App history={trackingHistory}/>
+                            </ApplicationError>
+                        </Provider>,
+                        mountPoint
+                    )
+                }
+            }
+            customElements.define('kfz-dialog', KfzDialog);
+            
+        </script>
+    </head>
+    <body>
+        <h1>Web Component Test</h1>
+        <!---
+            - GET Params as attrs
+            - CORS
+        -->
+        <kfz-dialog b2bid="50" cpid="ch24_v_natural"></kfz-dialog>
+    </body>
+</html>
