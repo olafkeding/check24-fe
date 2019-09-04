@@ -287,5 +287,125 @@ const verifyUser = async function(){
     }
 };
 
+// The arguments object is a local variable available
+// within all non-arrow functions.
+// no Array, but Array like: length property, access entries by index
+
+function foo(){
+    console.log(arguments[1]);
+    console.log(arguments.length);
+};
+
+foo(1,2,3,4); // 2, 4
+foo("Katze", "Maus", "Elefant"); // Maus, 3
+
+// it is often useful to convert the arguments object into an array
+// in order to use array methods (push, pop, forEach)
+function bar(){
+    var args = Array.prototype.slice.call(arguments);
+    args.pop();
+    args.forEach(function(item) {
+        console.log(item + "!");
+    })
+};
+
+bar("Katze", "Maus", "Elefant"); // Katze!, Maus!
+
+// The this keyword behaves differently in different contexts. It also behaves differently between strict-mode and non-strict-mode
+// Arrow function do not bind any this, no matter what
+// in an event handler, this is the element the event is fired from
+var links = document.getElementsByTagName('a');
+for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function(e){
+        e.preventDefault();
+        this.style.color = '#f00';
+    });
+}
+// In global context, this refers to the global object (window, in the Browser)
+console.log(this); // window
+
+// inside a function called it is still window or undefined in strict mode
+function foo(){
+    console.log(this); //window
+}
+foo();
+
+function bar() {
+    'use strict';
+    console.log(this); // undefined
+}
+bar();
+
+// if a function is the property on an object, this refers to the object the function is a property of
+var hund = {
+    flauschig: true,
+    streicheln: function(){
+        console.log(this.flauschig ? "Hmmm, flauschig :)" : "Schade, nicht sehr flauschig :(");
+    }
+};
+hund.streicheln(); // Hmmm, flauschig :)
+hund.flauschig = false;
+hund.streicheln(); // Schade, nicht sehr flauschig :(
+
+// Inside a function, the value of this depends on how the function is called.
+// Methods to set this when calling a function are Function.prototype.call() and Function.prototype.apply()
+function hund(flauschig, bissig) {
+    console.log({this: this, flauschig: flauschig, bissig: bissig});
+}
+
+var hund = {
+    streicheln: function(prefix, sufffix) {
+        console.log(prefix + " " +  this.name  + " " + sufffix);
+    }
+};
+
+hund.name = "Hugo";
+var streichelnFunc = hund.streicheln;
+// when invoked from an object, this refers to the object
+hund.streicheln("Feiner", "sitz"); // Feiner Hugo sitz
+
+// when not invoked from an object, this is undefined
+streichelnFunc("Feiner", " sitz"); // Feiner   sitz
+
+// apply and call provide this an the arguments dynamically
+streichelnFunc.call(hund, "Guter", "Platz!"); // Guter Hugo Platz!
+streichelnFunc.apply(hund, ["Guter", "Platz!"]); // Guter Hugo Platz!
+
+// bind allows to assign a static this to a function
+var boundStreichelnFunc = streichelnFunc.bind(hund);
+boundStreichelnFunc("Lieber", "gib Pfote"); // Lieber Hugo gib Pfote
+
+
+
+// This can be set at function creation time by using Function.prototype.bind()
+
+// when a function is used a constructor, it returns a this object is created inside the function representing the function's "instance"
+function Hund(flauschig) {
+    this.streicheln = function(){
+        console.log(flauschig ? "Hmmm, flauschig :)" : "Schade, nicht sehr flauschig :(");
+    }
+};
+
+var flauschigerHund = new Hund(true);
+var unflasuchigerHund = new Hund(false);
+var forgotNew = Hund(true);
+flauschigerHund.streicheln(); // Hmmm, flauschig :)
+unflasuchigerHund.streicheln(); // Schade, nicht sehr flauschig :(
+forgotNewHund.streicheln(); // Cannot read property 'streicheln' of undefined
+
+// if an object is returned from the function, "this" is ignored
+function Hund2(flauschig) {
+    this.streicheln = function(){
+        console.log(flauschig ? "Hmmm, flauschig :)" : "Schade, nicht sehr flauschig :(");
+    };
+
+    return {
+        streicheln : function(){console.log("Wau Wau!");}
+    }
+};
+var hund2 = new Hund2(true);
+hund2.streicheln(); // Wau Wau!
+
+
 
 
