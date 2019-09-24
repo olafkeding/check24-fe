@@ -73,7 +73,7 @@
             //TODO #1
             //- use the get function to load the ort options form the server
             //- Url: http://schulung.bloffen.de/ajax/plz_lookup.php?plz={PLZ_VALUE}
-            //- the API supports two plz: "81539" and "16845"
+            //- the API supports two plz: "81539", "52511" and "16845"
             //- only dispatch the call if the user entered 5 digits
             //- if the serverreturns an empty list, show an error in the element with the class "error"
             //- if the server does return one option, display it in a span with the class "ort-label"
