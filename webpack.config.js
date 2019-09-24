@@ -13,7 +13,7 @@ module.exports = props => {
         mode: env,
         entry: {
             //multiple entries possible here
-            "bootstrap": path.resolve(__dirname + "/js/index.js"),
+            bootstrap: path.resolve(__dirname + "/js/index.js"),
         },
 
         output: {
@@ -39,6 +39,7 @@ module.exports = props => {
 };
 
 //last 2 Chrome versions
+//ie 11
 
 
 

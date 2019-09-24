@@ -4,17 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>3</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <script async src="jquery.js"></script>
-    <script async src="lib.js"></script>
-    <script async src="doesNotNeedJquery.js"></script>
-
+    <!-- Hack to make css load async -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <style>
+        body {
+            margin: 0;
+            padding: 25px;
+            background: #fff;
+            font-family: Verdana,Arial,Helvetica,sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #575757;
+        }
+        h1 {
+            font-size: 2em;
+            margin: .67em 0;
+            font-weight: normal;
+        }
+        h2 {
+            font-size: 2.5rem;
+            line-height: 1.4;
+            margin-top: 0;
+            margin-bottom: .5rem;
+            font-weight: normal;
+        }
+    </style>
 </head>
 <body>
     <h1>THE START OF THE DOCUMENT</h1>
-
-
     <div class="wrapper" id="content">
         <p>
             "The quick brown fox jumps over the lazy dog" is an English-language pangram—a sentence that contains all of the letters of the alphabet. It is commonly used for touch-typing practice, testing typewriters and computer keyboards, displaying examples of fonts, and other applications involving text where the use of all letters in the alphabet is desired. Owing to its brevity and coherence, it has become widely known.
@@ -22,12 +39,18 @@
         <p>
             "The quick brown fox jumps over the lazy dog" is an English-language pangram—a sentence that contains all of the letters of the alphabet. It is commonly used for touch-typing practice, testing typewriters and computer keyboards, displaying examples of fonts, and other applications involving text where the use of all letters in the alphabet is desired. Owing to its brevity and coherence, it has become widely known.
         </p>
-        <img src="image.jpg" />
+        <img alt="The quick brown fox jumps over the lazy dog" src="image.jpg" />
         <p>
             "The quick brown fox jumps over the lazy dog" is an English-language pangram—a sentence that contains all of the letters of the alphabet. It is commonly used for touch-typing practice, testing typewriters and computer keyboards, displaying examples of fonts, and other applications involving text where the use of all letters in the alphabet is desired. Owing to its brevity and coherence, it has become widely known.
         </p>
     </div>
     <h1>THE END OF THE DOCUMENT</h1>
+
+    <script>
+        ['doesNotNeedJquery.js','jquery.js','lib.js'].forEach(function(src) {
+            var script = document.createElement('script');script.src = src; script.async = false;document.head.appendChild(script);
+        });
+    </script>
 
 </body>
 </html>
